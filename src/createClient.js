@@ -52,7 +52,27 @@ function createClient (options) {
         break
       case 'offline':
       default:
-        client.username = options.username
+        // client.username = options.username
+        // client.uuid = 
+        var username1 = 'Nieczlowiek' + getRandomInt(1, 1000)
+        const token = 'eyJraWQiOiJhYzg0YSIsImFsZyI6IkhTMjU2In0.eyJ4dWlkIjoiMjUzNTQ2MDg1NjAxODk2OSIsImFnZyI6IkFkdWx0Iiwic3ViIjoiOGJlZWY4Y2EtMTg5MS00YjZhLWIyZWEtODU5Zjc4ZTMyY2QxIiwiYXV0aCI6IlhCT1giLCJucyI6ImRlZmF1bHQiLCJyb2xlcyI6W10sImlzcyI6ImF1dGhlbnRpY2F0aW9uIiwiZmxhZ3MiOlsidHdvZmFjdG9yYXV0aCIsIm9yZGVyc18yMDIyIl0sInBsYXRmb3JtIjoiVU5LTk9XTiIsInl1aWQiOiIwZDM3YWFkZmJlZGNmYmYxMTMzMmUyYzAxZjMwZmJmOCIsIm5iZiI6MTY5MjQ2MTA0NSwiZXhwIjoxNjkyNTQ3NDQ1LCJpYXQiOjE2OTI0NjEwNDV9.y1j_MvJR-LTYzX6z7euweHLTpp1moaQgwmB7dOtkfXU'
+        const profile = {
+          // id: '75f437295de44f04957ffed2acf43c85',
+          // name: '_thefatduck',
+          name: options.uuid,
+          id: '108d4fefb3684e48b121aa981asdb9b8bb9'
+        }
+        const session = {
+          accessToken: token,
+          selectedProfile: profile,
+          availableProfile: [profile]
+        }
+        // Object.assign(client, certificates)
+        client.session = session
+        client.username = profile.name
+
+        options.accessToken = token
+        // client.emit('session', session)
         options.connect(client)
         break
     }
